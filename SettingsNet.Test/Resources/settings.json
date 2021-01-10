@@ -15,7 +15,20 @@
   "nested_object": {
     "downloads": 27161472,
     "domain_name": "morrowind",
-    "approved_date": 1
+    "approved_date": 1,
+    "nested_object1": {
+      "file_views": 126342730,
+      "authors": 2433
+    }
+  },
+  "nested_object02": {
+    "downloads": 27161472,
+    "domain_name": "morrowind",
+    "approved_date": 1,
+    "nested_object1": {
+      "file_views": 126342730,
+      "authors": 2433
+    }
   },
   "categories": [
     {
