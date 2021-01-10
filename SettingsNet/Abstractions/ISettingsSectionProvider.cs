@@ -8,9 +8,10 @@ namespace SettingsNet.Abstractions
         /// Get a settings sub-section with the specified key.
         /// </summary>
         /// <param name="key">The key of the settings section.</param>
-        /// <returns>The <see cref="ISettingsSection"/>.</returns>
+        /// <returns>The <see cref="ISettingsSection"/> or null.</returns>
         /// <remarks>
-        ///     This method will never return <c>null</c>. If no matching sub-section is found with the specified key,
+        ///     This method will return <c>null</c> if the key already exists but doesn't correspond to a sub-Section.
+        ///     <br/>If key doesn't exist and no a matching sub-section is found with the specified key,
         ///     an empty <see cref="ISettingsSection"/> will be returned.
         /// </remarks>
         ISettingsSection GetSection(string key);
@@ -20,8 +21,9 @@ namespace SettingsNet.Abstractions
         /// </summary>
         /// <typeparam name="T">The .Net type.</typeparam>
         /// <param name="key">The key.</param>
+        /// <param name="defaultValue">The default value to return if the section is not found.</param>
         /// <returns>The .Net object.</returns>
-        T GetSection<T>(string key) where T : class, new();
+        T GetSection<T>(string key, T defaultValue = default) where T : class, new();
 
         /// <summary>
         /// Get the immediate descendant settings sub-sections.

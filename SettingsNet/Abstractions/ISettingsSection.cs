@@ -9,15 +9,17 @@
         /// Get this <see cref="ISettingsSection"/> as the specified .Net type.
         /// </summary>
         /// <typeparam name="T">The .Net type.</typeparam>
-        /// <returns>A .Net object or null.</returns>
+        /// <returns>A .Net object.</returns>
         T Get<T>() where T : class, new();
 
         /// <summary>
         /// Get the setting value by key as the specified .Net type.
         /// </summary>
+        /// <param name="key">The section key.</param>
+        /// <param name="defaultValue">The default value to return if the section was not found.</param>
         /// <typeparam name="T">The .Net type.</typeparam>
-        /// <returns>The .Net object or a default value.</returns>
-        T Get<T>(string key);
+        /// <returns>The .Net object or a default value if it doesn't exist.</returns>
+        T Get<T>(string key, T defaultValue = default);
 
         /// <summary>
         /// Get the key this section occupies in its parent.
