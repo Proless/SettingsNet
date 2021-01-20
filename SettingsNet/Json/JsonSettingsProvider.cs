@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SettingsNet.Abstractions;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace SettingsNet.Json
 {
@@ -10,6 +10,7 @@ namespace SettingsNet.Json
     {
         /* Fields */
         private readonly JsonSerializer _jsonSerializer;
+        private JsonSettingsSection _root;
 
         /* Properties */
         public JObject Document { get; }
@@ -34,7 +35,10 @@ namespace SettingsNet.Json
         /* Methods */
         public ISettingsSection GetRoot()
         {
-            return new JsonSettingsSection(this, _jsonSerializer);
+            if (!(_root is null)) return _root;
+
+            _root = new JsonSettingsSection(this, _jsonSerializer);
+            return _root;
         }
 
         public IEnumerable<KeyValuePair<string, string>> GetAll()
